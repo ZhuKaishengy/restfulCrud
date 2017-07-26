@@ -9,7 +9,9 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<context:property-placeholder location="file:${com.aisino.mid.home}${file.separator}restful-crud${file.separator}config${file.separator}jdbc.properties"/>
+	<context:annotation-config/>
+	
+	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="i18n"></property>
@@ -38,7 +40,7 @@
 		<aop:pointcut expression="execution(* com.aisino.service..*.*(..))" id="pointcut"/>
 	</aop:config>
 	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!-- 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:mapper/*.xml"></property>
@@ -46,6 +48,6 @@
 	
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
-	</bean>
+	</bean> -->
 	
 </beans>
